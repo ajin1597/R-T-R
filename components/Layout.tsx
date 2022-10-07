@@ -100,7 +100,7 @@ export default function Layout(props: any) {
             </Link>
           </nav>
         </div>
-        <div className="h-[100vh] w-[1300px] p-6">{props.children}</div>
+        <div className="h-[93vh] w-[1250px] p-6">{props.children}</div>
       </div>
     </div>
   );
