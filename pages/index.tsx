@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             </select>
           </div>
         </div>
-        <div className="h-full w-full  ">
+        <div className="h-full w-full">
           <Map latitude={36.7931172} longitude={127.1266442}></Map>
         </div>
       </div>
