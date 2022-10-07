@@ -7,7 +7,7 @@ export default function Layout(props: any) {
 
   return (
     <div className="flex justify-center">
-      <div className="h-[100vh] w-[1300px] p-6 bg-gray-300">
+      <div className="w-[80%] p-6 bg-gray-300">
         <div id="title_Layout" className="  flex justify-between text-2xl ">
           <div id="title_left_bar">a</div>
           <nav
@@ -100,7 +100,7 @@ export default function Layout(props: any) {
             </Link>
           </nav>
         </div>
-        <div className="h-[93vh] w-[1250px] p-6">{props.children}</div>
+        <div className=" p-6">{props.children}</div>
       </div>
     </div>
   );

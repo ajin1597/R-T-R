@@ -1,14 +1,11 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
-import Link from "next/link";
+import Map from "../components/Map";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <div id="mainPage" className="flex justify-between h-[90vh]">
+      <div id="mainPage" className="flex justify-between">
         <div id="left_box">
           <div
             id="first_choose_bar"
@@ -27,7 +24,9 @@ const Home: NextPage = () => {
             </select>
           </div>
         </div>
-        <div id="map">====================</div>
+        <div className="h-full w-full  ">
+          <Map latitude={36.7931172} longitude={127.1266442}></Map>
+        </div>
       </div>
     </Layout>
   );
