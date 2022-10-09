@@ -1,11 +1,285 @@
 import type { NextPage } from "next";
+import { useState } from "react";
 import Layout from "../components/Layout";
 import Map from "../components/Map";
 
+interface secondRegionType {
+  region: String;
+  regionCD: String;
+}
+
 const Home: NextPage = () => {
+  const [firstRegion, setFirstRegion] = useState([
+    { region: "서울", regionCD: "11000" },
+    { region: "경기", regionCD: "41000" },
+    { region: "충남", regionCD: "44000" },
+    { region: "충북", regionCD: "43000" },
+    { region: "전남", regionCD: "46000" },
+    { region: "전북", regionCD: "45000" },
+    { region: "경남", regionCD: "48000" },
+    { region: "경북", regionCD: "47000" },
+    { region: "강원", regionCD: "42000" },
+    { region: "인천", regionCD: "28000" },
+    { region: "광주", regionCD: "29000" },
+    { region: "세종", regionCD: "36000" },
+    { region: "대전", regionCD: "30000" },
+    { region: "울산", regionCD: "31000" },
+    { region: "부산", regionCD: "26000" },
+    { region: "대구", regionCD: "27000" },
+    { region: "제주", regionCD: "50000" },
+  ]);
+  const [secondRegion, setSecondRegion] = useState<secondRegionType[]>([]);
+  const allSecondRegion = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    switch (event.currentTarget.value) {
+      case "11000":
+        setSecondRegion([
+          { region: "종로구", regionCD: "11110" },
+          { region: "중구", regionCD: "11140" },
+          { region: "용산구", regionCD: "11170" },
+          { region: "성동구", regionCD: "11200" },
+          { region: "광진구", regionCD: "11215" },
+          { region: "동대문구", regionCD: "11230" },
+          { region: "중랑구", regionCD: "11260" },
+          { region: "성북구", regionCD: "11290" },
+          { region: "강북구", regionCD: "11305" },
+          { region: "도봉구", regionCD: "11320" },
+          { region: "노원구", regionCD: "11350" },
+          { region: "은평구", regionCD: "11380" },
+          { region: "서대문구", regionCD: "11410" },
+          { region: "마포구", regionCD: "11440" },
+          { region: "양천구", regionCD: "11470" },
+          { region: "강서구", regionCD: "11500" },
+          { region: "구로구", regionCD: "11530" },
+          { region: "금천구", regionCD: "11545" },
+          { region: "영등포구", regionCD: "11560" },
+          { region: "동작구", regionCD: "11590" },
+          { region: "관악구", regionCD: "11620" },
+          { region: "서초구", regionCD: "11650" },
+          { region: "강남구", regionCD: "11680" },
+          { region: "송파구", regionCD: "11710" },
+          { region: "강동구", regionCD: "11740" },
+        ]);
+
+        break;
+      case "41000":
+        setSecondRegion([
+          { region: "과천시", regionCD: "41290" },
+          { region: "의왕시", regionCD: "41430" },
+          { region: "부천시", regionCD: "41190" },
+          { region: "오산시", regionCD: "41370" },
+          { region: "하남시", regionCD: "41450" },
+          { region: "김포시", regionCD: "41570" },
+          { region: "동두천시", regionCD: "41250" },
+          { region: "안양시 / 만안구 ", regionCD: "41171" },
+          { region: "안양시 / 동안구 ", regionCD: "41173" },
+          { region: "안성시", regionCD: "41550" },
+          { region: "안산시 / 상록구 ", regionCD: "41271" },
+          { region: "안산시 / 단원구 ", regionCD: "41273" },
+          { region: "평택시", regionCD: "41220" },
+          { region: "광양시 / 덕양구 ", regionCD: "41610" },
+          { region: "고주시", regionCD: "41285" },
+          { region: "고양시 / 일산동구", regionCD: "41281" },
+          { region: "고양시 / 일산서구", regionCD: "41287" },
+          { region: "양주시", regionCD: "41630" },
+          { region: "성남시 / 수정구", regionCD: "41131" },
+          { region: "성남시 / 중원구", regionCD: "41133" },
+          { region: "성남시 / 분당구", regionCD: "41135" },
+          { region: "용인시 / 처안구", regionCD: "41461" },
+          { region: "용인시 / 기흥구", regionCD: "41463" },
+          { region: "용인시 / 수지구", regionCD: "41465" },
+          { region: "광명시", regionCD: "41210" },
+          { region: "남양주시", regionCD: "41360" },
+          { region: "이천시", regionCD: "41500" },
+          { region: "파주시", regionCD: "41480" },
+          { region: "의정부시", regionCD: "41150" },
+          { region: "군포시", regionCD: "41410" },
+          { region: "수원시 / 장안구 ", regionCD: "41111" },
+          { region: "수원시 / 권선구 ", regionCD: "41113" },
+          { region: "수원시 / 팔달구 ", regionCD: "41115" },
+          { region: "수원시 / 영통구 ", regionCD: "41117" },
+          { region: "화성시", regionCD: "41590" },
+          { region: "구리시", regionCD: "41310" },
+          { region: "여주시", regionCD: "41670" },
+          { region: "포천시", regionCD: "41650" },
+          { region: "시흥시", regionCD: "41390" },
+        ]);
+        break;
+      case "44000":
+        setSecondRegion([
+          { region: "천안시 / 동남구", regionCD: "44131" },
+          { region: "천안시 / 서북구", regionCD: "44133" },
+          { region: "공주시", regionCD: "44150" },
+          { region: "보령시", regionCD: "44180" },
+          { region: "아산시", regionCD: "44200" },
+          { region: "서산시", regionCD: "44210" },
+          { region: "논산시", regionCD: "44230" },
+          { region: "계룡시", regionCD: "44250" },
+          { region: "홍성군", regionCD: "44800" },
+          { region: "예산군", regionCD: "44810" },
+          { region: "당진시", regionCD: "44270" },
+        ]);
+        break;
+      case "43000":
+        setSecondRegion([
+          { region: "청주시 / 상당구", regionCD: "43111" },
+          { region: "청주시 / 서원구", regionCD: "43112" },
+          { region: "청주시 / 흥덕구", regionCD: "43113" },
+          { region: "청주시 / 청원구", regionCD: "43114" },
+          { region: "충주시", regionCD: "43130" },
+          { region: "제천시", regionCD: "43150" },
+          { region: "음성군", regionCD: "43770" },
+        ]);
+        break;
+      case "46000":
+        setSecondRegion([
+          { region: "목포시", regionCD: "46110" },
+          { region: "여수시", regionCD: "46130" },
+          { region: "순천시", regionCD: "46150" },
+          { region: "나주시", regionCD: "46170" },
+          { region: "광양시", regionCD: "46230" },
+          { region: "무안군", regionCD: "46840" },
+        ]);
+        break;
+      case "45000":
+        setSecondRegion([
+          { region: "전주시 / 완산구", regionCD: "45111" },
+          { region: "전주시 / 덕진구", regionCD: "45113" },
+          { region: "군산시", regionCD: "45130" },
+          { region: "익산시", regionCD: "45140" },
+          { region: "정읍시", regionCD: "45180" },
+          { region: "남원시", regionCD: "45190" },
+          { region: "김제시", regionCD: "45210" },
+        ]);
+        break;
+      case "48000":
+        setSecondRegion([
+          { region: "창원시 / 의창구", regionCD: "48121" },
+          { region: "창원시 / 성산구", regionCD: "48123" },
+          { region: "창원시 / 마산합포구", regionCD: "48125" },
+          { region: "창원시 / 마산회원구", regionCD: "48127" },
+          { region: "창원시 / 진해구", regionCD: "48129" },
+          { region: "진주시", regionCD: "48170" },
+          { region: "통영시", regionCD: "48220" },
+          { region: "사천시", regionCD: "48240" },
+          { region: "김해시", regionCD: "48250" },
+          { region: "밀양시", regionCD: "48270" },
+          { region: "거제시", regionCD: "48310" },
+          { region: "양산시", regionCD: "48330" },
+        ]);
+        break;
+      case "47000":
+        setSecondRegion([
+          { region: "포항시 / 남구", regionCD: "47111" },
+          { region: "포항시 / 북구", regionCD: "47113" },
+          { region: "경주시", regionCD: "47130" },
+          { region: "김천시", regionCD: "47150" },
+          { region: "안동시", regionCD: "47170" },
+          { region: "구미시", regionCD: "47190" },
+          { region: "영주시", regionCD: "47210" },
+          { region: "영천시", regionCD: "47230" },
+          { region: "상주시", regionCD: "47250" },
+          { region: "문경시", regionCD: "47280" },
+          { region: "경산시", regionCD: "47290" },
+          { region: "칠곡군", regionCD: "47850" },
+        ]);
+        break;
+      case "42000":
+        setSecondRegion([
+          { region: "춘천시", regionCD: "42110" },
+          { region: "원주시", regionCD: "42130" },
+          { region: "강릉시", regionCD: "42150" },
+          { region: "동해시", regionCD: "42170" },
+          { region: "태백시", regionCD: "42190" },
+          { region: "속초시", regionCD: "42210" },
+          { region: "삼척시", regionCD: "42230" },
+        ]);
+        break;
+      case "28000":
+        setSecondRegion([
+          { region: "중구", regionCD: "28110" },
+          { region: "동구", regionCD: "28140" },
+          { region: "미추홀구", regionCD: "28177" },
+          { region: "연수구", regionCD: "28185" },
+          { region: "남동구", regionCD: "28200" },
+          { region: "부평구", regionCD: "28237" },
+          { region: "계양구", regionCD: "28245" },
+          { region: "서구", regionCD: "28260" },
+        ]);
+        break;
+      case "29000":
+        setSecondRegion([
+          { region: "동구 ", regionCD: "29110" },
+          { region: "서구 ", regionCD: "29140" },
+          { region: "남구 ", regionCD: "29155" },
+          { region: "북구 ", regionCD: "29170" },
+          { region: "광산구", regionCD: "29200" },
+        ]);
+        break;
+      case "36000":
+        setSecondRegion([{ region: "세종", regionCD: "36000" }]);
+        break;
+      case "30000":
+        setSecondRegion([
+          { region: "동구", regionCD: "30110" },
+          { region: "중구", regionCD: "30140" },
+          { region: "서구", regionCD: "30170" },
+          { region: "유성구", regionCD: "30200" },
+          { region: "대덕구", regionCD: "30230" },
+        ]);
+        break;
+      case "31000":
+        setSecondRegion([
+          { region: "중구", regionCD: "31110" },
+          { region: "남구", regionCD: "31140" },
+          { region: "동구", regionCD: "31170" },
+          { region: "북구", regionCD: "31200" },
+          { region: "울주군", regionCD: "31710" },
+        ]);
+        break;
+      case "26000":
+        setSecondRegion([
+          { region: "중구", regionCD: "26110" },
+          { region: "서구", regionCD: "26140" },
+          { region: "동구", regionCD: "26170" },
+          { region: "영도구", regionCD: "26200" },
+          { region: "부산진구", regionCD: "26230" },
+          { region: "남구", regionCD: "26290" },
+          { region: "연제구", regionCD: "26470" },
+          { region: "수영구", regionCD: "26500" },
+          { region: "해운대구", regionCD: "26350" },
+          { region: "금정구", regionCD: "26410" },
+          { region: "동래구", regionCD: "26260" },
+          { region: "기장군", regionCD: "26710" },
+          { region: "북구", regionCD: "26320" },
+          { region: "강서구", regionCD: "26440" },
+          { region: "사상구", regionCD: "26530" },
+          { region: "사하구", regionCD: "26380" },
+        ]);
+        break;
+      case "27000":
+        setSecondRegion([
+          { region: "중구", regionCD: "27110" },
+          { region: "동구", regionCD: "27140" },
+          { region: "서구", regionCD: "27170" },
+          { region: "남구", regionCD: "27200" },
+          { region: "북구", regionCD: "27230" },
+          { region: "수성구", regionCD: "27260" },
+          { region: "달서구", regionCD: "27290" },
+          { region: "달성군", regionCD: "27710" },
+        ]);
+        break;
+      case "50000":
+        setSecondRegion([
+          { region: "제주시", regionCD: "50110" },
+          { region: "서귀포시", regionCD: "50130" },
+        ]);
+        break;
+    }
+  };
+
   return (
     <Layout>
-      <div id="mainPage" className="flex justify-between">
+      <div id="mainPage" className="flex justify-between ">
         <div id="left_box">
           <div
             id="first_choose_bar"
@@ -18,10 +292,40 @@ const Home: NextPage = () => {
               평균가
             </div>
           </div>
-          <div id="select_box_bar" className="bg-purple-200 h-[70vh] w-[400px]">
-            <select name="a" id="a">
-              aaa
-            </select>
+          <div
+            id="second_choose_bar"
+            className=" bg-purple-200 h-[71vh] pt-[100px] "
+          >
+            <div id="all_SelectBox" className="flex flex-col">
+              <div
+                id="first_select_box_bar"
+                className=" py-2 pl-[20%] w-[400px]"
+              >
+                <select className="w-[250px]" onChange={allSecondRegion}>
+                  {firstRegion.map((ele, idx) => (
+                    <option key={idx} value={ele.regionCD}>
+                      {ele.region}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div
+                id="second_select_box_bar"
+                className="py-2 pl-[20%] w-[400px]"
+              >
+                <select className="w-[250px]" onChange={allSecondRegion}>
+                  {secondRegion.map((ele: any, idx) => (
+                    <option key={idx} value={ele.regionCD}>
+                      {ele.region}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="py-4 pl-[20%]">
+                <button className="p-2 bg-blue-200 rounded-2xl">찾기</button>
+              </div>
+            </div>
           </div>
         </div>
         <div className="h-full w-full">
