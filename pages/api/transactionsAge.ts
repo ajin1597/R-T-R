@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { json } from "stream/consumers";
-import { Transactions_volume_by_age, PrismaClient } from "@prisma/client";
+import { Transactions_age_2019, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -15,7 +15,10 @@ export default function handler(
   let test: object[] = [];
   try {
     fetch(
-      `https://api.odcloud.kr/api/RealEstateTradingBuyerAge/v1/getRealEstateTradingCountAge?perPage=10000&serviceKey=Qo3J3u1dw0A%2BX9AuS68G13RnSAsowYysivlTzs04BtMV%2BwXhSuRn5qxRJrQixlKlwwVFkreC51d6CrwIoYlxoQ%3D%3D&cond[RESEARCH_DATE::GTE]=202201`
+      // `https://api.odcloud.kr/api/RealEstateTradingBuyerAge/v1/getRealEstateTradingCountAge?perPage=10000&serviceKey=Qo3J3u1dw0A%2BX9AuS68G13RnSAsowYysivlTzs04BtMV%2BwXhSuRn5qxRJrQixlKlwwVFkreC51d6CrwIoYlxoQ%3D%3D&cond[RESEARCH_DATE::GTE]=202201` //2022
+      // `https://api.odcloud.kr/api/RealEstateTradingBuyerAge/v1/getRealEstateTradingCountAge?perPage=10000&serviceKey=Qo3J3u1dw0A%2BX9AuS68G13RnSAsowYysivlTzs04BtMV%2BwXhSuRn5qxRJrQixlKlwwVFkreC51d6CrwIoYlxoQ%3D%3D&cond[RESEARCH_DATE::GTE]=202101&cond[RESEARCH_DATE::LTE]=202112` //2021
+      // `https://api.odcloud.kr/api/RealEstateTradingBuyerAge/v1/getRealEstateTradingCountAge?perPage=10000&serviceKey=Qo3J3u1dw0A%2BX9AuS68G13RnSAsowYysivlTzs04BtMV%2BwXhSuRn5qxRJrQixlKlwwVFkreC51d6CrwIoYlxoQ%3D%3D&cond[RESEARCH_DATE::GTE]=202001&cond[RESEARCH_DATE::LTE]=202012` //2020
+      `https://api.odcloud.kr/api/RealEstateTradingBuyerAge/v1/getRealEstateTradingCountAge?perPage=10000&serviceKey=Qo3J3u1dw0A%2BX9AuS68G13RnSAsowYysivlTzs04BtMV%2BwXhSuRn5qxRJrQixlKlwwVFkreC51d6CrwIoYlxoQ%3D%3D&cond[RESEARCH_DATE::GTE]=201901&cond[RESEARCH_DATE::LTE]=201912` //2019
     )
       .then((res) => res.json())
       .then(async (json) => {
@@ -39,12 +42,18 @@ export default function handler(
           test.push(obj);
           //   console.log(ele);
         });
-        const cTest = await prisma.transactions_volume_by_age.createMany({
+        // const cTest = await prisma.transactions_age_2022.createMany({
+        //   data: test,
+        // });
+        const cTst = await prisma.transactions_age_2019?.createMany({
           data: test,
         });
+        res.status(200).json({ name: "ok!" });
       });
-    res.status(200).json({ name: "ok!" });
   } catch (err) {
     res.status(200).json({ name: "안돼~" });
+  } finally {
+    console.log("완료.");
+    prisma.$disconnect();
   }
 }
