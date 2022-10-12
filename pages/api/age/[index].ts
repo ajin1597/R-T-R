@@ -16,8 +16,8 @@ export default async function handler(
     req.query.index?.toString() || ""
   );
 
-  let House;
-  let Apart;
+  let House: any;
+  let Apart: any;
 
   const yearNumber = (Number(ageDayRegion) / 100).toFixed(0) || 0;
 
