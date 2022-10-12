@@ -1,11 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import {
-  PrismaClient,
-  Transactions_age_2022,
-  Transactions_age_2021,
-  Transactions_age_2020,
-  Transactions_age_2019,
-} from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
