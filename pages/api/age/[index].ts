@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 type Data = {
   House?: any;
   Apart?: any;
-  user?: PrismaClient;
 };
 
 export default async function handler(
