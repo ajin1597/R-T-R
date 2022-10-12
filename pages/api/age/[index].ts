@@ -25,8 +25,7 @@ export default async function handler(
 
   // switch (yearNumber) {
   //   case "2022":
-  House = await prisma.user
-    .findMany
+  House = await prisma.user.findUnique(
     //   {
     //   // 22년도 주택 거래
     //   where: {
@@ -35,7 +34,12 @@ export default async function handler(
     //     RESEARCH_DATE: ageDayRegion,
     //   },
     // }
-    ();
+    {
+      where: {
+        id: "123",
+      },
+    }
+  );
   // Apart = await prisma.transactions_age_2022.findMany({
   //   // 22년도 아파트 거래
   //   where: {
