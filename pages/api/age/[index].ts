@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import client from "../../../libs/server/client";
 
 type Data = {
   House?: any;
@@ -25,7 +23,7 @@ export default async function handler(
 
   // switch (yearNumber) {
   //   case "2022":
-  House = await prisma.transactions_age_2022.findMany({
+  House = await client.transactions_age_2022.findMany({
     // 22년도 주택 거래
     where: {
       REGION_CD: ageRegions,
@@ -33,7 +31,7 @@ export default async function handler(
       RESEARCH_DATE: ageDayRegion,
     },
   });
-  Apart = await prisma.transactions_age_2022.findMany({
+  Apart = await client.transactions_age_2022.findMany({
     // 22년도 아파트 거래
     where: {
       REGION_CD: ageRegions,
