@@ -70,3 +70,8 @@ model Transactions_age_2019 {
   AGE06_CNT     Int?
   AGE07_CNT     Int?
 }
+
+model user {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  user String
+}

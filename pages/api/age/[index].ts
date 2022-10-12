@@ -25,7 +25,7 @@ export default async function handler(
 
   // switch (yearNumber) {
   //   case "2022":
-  House = await prisma.transactions_age_2022
+  House = await prisma.user
     .findMany
     //   {
     //   // 22년도 주택 거래
